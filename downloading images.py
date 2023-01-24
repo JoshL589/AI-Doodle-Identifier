@@ -9,4 +9,5 @@ for label in class_names:
 
     for i in range(2500):
         drawing = data.get_drawing()
-        drawing.image.save('images/' + label + '/' + label + str(i) + '.png')
+        image = drawing.image
+        image.resize(image_size).save('images/' + label + '/' + label + str(i) + '.png')
