@@ -1,6 +1,5 @@
 import tensorflow as tf
 import numpy as np
-import matplotlib.pyplot as plt
 
 class_names = ['bee', 'butterfly', 'eye', 'mushroom', 'diamond', 'snowman', 'cat', 'popsicle', 'octopus', 'bowtie']
 
@@ -44,3 +43,7 @@ model = tf.keras.Sequential([
 model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
+
+model.fit(ds_train, validation_data=ds_validation, epochs=10)
+model.evaluate(ds_validation)
+model.save('models/model0')
