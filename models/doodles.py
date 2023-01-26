@@ -32,7 +32,6 @@ ds_validation = tf.keras.preprocessing.image_dataset_from_directory(
 input_shape = (28, 28, 1)
 
 model = tf.keras.Sequential([
-    tf.keras.layers.Rescaling(1. / 255, input_shape=input_shape),
     tf.keras.layers.BatchNormalization(),
     tf.keras.layers.Conv2D(6, kernel_size=(3, 3), padding="same", activation="relu"),
     tf.keras.layers.Conv2D(8, kernel_size=(3, 3), padding="same", activation="relu"),
