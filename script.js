@@ -50,17 +50,33 @@ function clearCanvas() {
 const predictButton = document.getElementById("predict");
 predictButton.addEventListener("click", predict);
 
+// Use the Fetch API to send the image data to the backend
 async function predict() {
   // Get the image data from the canvas
   const canvas = document.getElementById("canvas");
-  canvas.style.backgroundColor = "white";
-
-  const imageData = canvas
-    .getContext("2d")
-    .getImageData(0, 0, canvas.width, canvas.height);
-
-  const imageDataURL = canvas.toDataURL();
-  console.log(imageDataURL);
+  const imageData = canvas.toDataURL("image/png");
+  // Convert the image data to a blob
+  const blob = await fetch(imageData).then((response) => response.blob());
+  // Create a FormData object to send the image data
+  const formData = new FormData();
+  formData.append("image", blob, "image.png");
+  console.log(formData);
+  // Send the image data to the backend
+  const response = await fetch("http://127.0.0.1:5000/predict", {
+    method: "POST",
+    body: formData,
+  });
+  // Get the prediction results from the response
+  const predictions = await response.json();
+  // Do something with the predictions
+  console.log(predictions);
+  const predictionh1 = document.getElementById("prediction");
+  predictionh1.innerHTML =
+    "Prediction: " +
+    predictions["predicted_class"] +
+    " Confidence: " +
+    predictions["confidence"] +
+    "%";
 }
 
 const class_names = [
