@@ -8,14 +8,25 @@
     <title>Doodle Recogniser</title>
   </head>
   <body>
-    <canvas id="canvas"></canvas>
-    <button id="clear">clear</button>
-    <button id="predict">predict</button>
+    <header>
+      <h1>CNN Doodle Recogniser</h1>
+    </header>
+    <div class="canvasdiv"><canvas id="canvas"></canvas></div>
+    <div class="buttons">
+      <button id="clear">CLEAR</button> <button id="predict">PREDICT</button>
+    </div>
+
     <h1 id="prediction">prediction</h1>
     <p>
       10 drawings are: bee, bowtie, butterfly, cat, diamond, eye, mushroom,
       octopus, popsicle, snowman
     </p>
+    <footer>
+      <h2>
+        Built by Joshua Li with TensorFlow, Trained on:
+        <a href="https://quickdraw.withgoogle.com/data">quickdraw</a>
+      </h2>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jimp@0.8.0/browser/lib/jimp.min.js"></script>
     <script type="module" src="script.js"></script>

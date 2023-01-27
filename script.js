@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d");
 
 canvas.height = 510;
 canvas.width = 510;
+
 ctx.strokeStyle = "black";
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -23,16 +24,19 @@ function finishedPosition() {
   ctx.beginPath();
 }
 
+var left = canvas.offsetLeft;
+var top = canvas.offsetTop;
+
 function draw(e) {
   if (!painting) return;
   ctx.lineWidth = 3;
   ctx.lineCap = "round";
   ctx.stroke();
 
-  ctx.lineTo(e.clientX, e.clientY);
+  ctx.lineTo(e.clientX - left - 10, e.clientY - top - 10);
   ctx.stroke();
   ctx.beginPath();
-  ctx.moveTo(e.clientX, e.clientY);
+  ctx.moveTo(e.clientX - left - 10, e.clientY - top - 10);
 }
 
 const clearButton = document.getElementById("clear");
