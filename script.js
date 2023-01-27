@@ -74,13 +74,30 @@ async function predict() {
   const predictions = await response.json();
   // Do something with the predictions
   console.log(predictions);
-  const predictionh1 = document.getElementById("prediction");
-  predictionh1.innerHTML =
-    "Prediction: " +
-    predictions["predicted_class"] +
-    " Confidence: " +
-    predictions["confidence"] +
-    "%";
+
+  const class_names = [
+    "bee",
+    "bowtie",
+    "butterfly",
+    "cat",
+    "diamond",
+    "eye",
+    "mushroom",
+    "octopus",
+    "popsicle",
+    "snowman",
+  ];
+
+  for (let i = 0; i < class_names.length; i++) {
+    const predictionLi = document.getElementById(class_names[i]);
+    predictionLi.innerHTML = `${class_names[i]}: ${predictions["predictions"][i]["confidence"]}`;
+    predictionLi.style.color = "white";
+  }
+
+  const correct = predictions["predicted_class"];
+
+  const correctLi = document.getElementById(correct);
+  correctLi.style.color = "green";
 }
 
 const class_names = [
