@@ -1,8 +1,6 @@
 import tensorflow as tf
 import numpy as np
 
-class_names = ['bee', 'bowtie', 'butterfly', 'cat', 'diamond', 'eye', 'mushroom', 'octopus', 'popsicle', 'snowman']
-
 image_size = (28, 28)
 
 dataset_dir = 'images'

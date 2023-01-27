@@ -1,6 +1,6 @@
 from quickdraw import QuickDrawDataGroup
 
-class_names = ['donut', 'butterfly', 'eye', 'ice cream', 'crown', 'snowman', 'cat', 'clock', 'octopus', 'fish']
+class_names = ['donut', 'butterfly', 'carrot', 'ice cream', 'crown', 'snowman', 'cat', 'parachute', 'octopus', 'dumbbell']
 
 image_size = (28, 28)
 
