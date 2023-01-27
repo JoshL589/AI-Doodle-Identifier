@@ -1,8 +1,8 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.height = 510;
-canvas.width = 510;
+canvas.height = 560;
+canvas.width = 560;
 
 ctx.strokeStyle = "black";
 ctx.fillStyle = "white";
@@ -59,6 +59,7 @@ async function predict() {
   // Get the image data from the canvas
   const canvas = document.getElementById("canvas");
   const imageData = canvas.toDataURL("image/png");
+  console.log(imageData);
   // Convert the image data to a blob
   const blob = await fetch(imageData).then((response) => response.blob());
   // Create a FormData object to send the image data
@@ -90,14 +91,18 @@ async function predict() {
 
   for (let i = 0; i < class_names.length; i++) {
     const predictionLi = document.getElementById(class_names[i]);
-    predictionLi.innerHTML = `${class_names[i]}: ${predictions["predictions"][i]["confidence"]}`;
+    const predictionLitag = document.getElementById(class_names[i] + "tag");
+    predictionLi.innerHTML = `${predictions["predictions"][i]["confidence"]}`;
     predictionLi.style.color = "white";
+    predictionLitag.style.color = "white";
   }
 
   const correct = predictions["predicted_class"];
 
   const correctLi = document.getElementById(correct);
-  correctLi.style.color = "green";
+  const correctLitag = document.getElementById(correct + "tag");
+  correctLi.style.color = "#3CB371";
+  correctLitag.style.color = "#3CB371";
 }
 
 const class_names = [
