@@ -67,7 +67,7 @@ async function predict() {
   formData.append("image", blob, "image.png");
   console.log(formData);
   // Send the image data to the backend
-  const response = await fetch("http://127.0.0.1:5000/predict", {
+  const response = await fetch("https://flask-tensorflow-model-production.up.railway.app/predict", {
     method: "POST",
     body: formData,
   });
